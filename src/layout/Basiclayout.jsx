@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../components/common/Navbar";
+import Footer from "../components/common/Footer";
 
-const Basiclayout = () => {
+const BasicLayout = ({ children }) => {
   return (
-    <div>Basiclayout</div>
-  )
-}
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
 
-export default Basiclayout
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default BasicLayout;
