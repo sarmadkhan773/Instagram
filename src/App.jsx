@@ -12,43 +12,77 @@ function App() {
       <div>
     <Routes>
       <Route path='/' element={<BasicLayout><Home /></BasicLayout>} />
-      <Route path='/signin' element={<BasicLayout><Signin /></BasicLayout>} />
+
+const App = () => {
+const [page, setpage] = useState('home');
+const [openside, setopenside] = useState(false);
+const [notify, setnotify] = useState(false);
+const [notifys, setnotifys] = useState[('')];
+
+<Notifications isOpen={notify} notifications={notifications} onClose={toggleNotifications} />
+const change = () => {
+  setopenside(!isopenside)
+  setnotify(false)
+};
+
+const notifyopener = () => {
+  setnotify(!notify)
+  setopenside(false)
+};
+
+const notifyss = (m) => {
+  setnotifys(prevnotifys => [...prevnotifys,m])
+};
+
+const showpage = () => {
+if (page === 'home'){
+  return <Home onnotifys={notifys} />
+}
+if (page === profile) {
+  return <Profile/>
+}
+
+return null
+
+};
+
+return (
+<div  className="bg-white min-h-srceen flex relative">
+
+<Sidebar
+isOpen={isopenside}
+onClose={change}
+onNavigate={setpage}
+onShownnotifys={notifyopener}
+/>
+
+<Notification
+ onClose={change} />
+ isOpen={notify} 
+notifications={notifys}
+<main className="flex-1 container mx-auto pt-16 px-4" >
+  {showpage()}
+
+</main>
+<footer className="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50 md:hidden">
+<nav className="flex justify-around items-center h-14">
+<button className="p-2 rounded-full hover:bg-gray-200" onClick={change} >
+<span className="text-2x1">☰</span>
+
+</button>
+<button className="p-2 rounded-full hover:bg-gray-200"  onClick={change} >
+<span className="text-2xl">🔔</span>
+</button>
 
 
-    </Routes>
-<div>
 
+</nav>
+</footer>
 
-
-    <div
-      className={`fixed top-0 right-0 h-full w-72 bg-white border-l border-gray-200 z-40 transform transition-transform duration-300
-        ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
-    >
-      <div className="p-4 flex flex-col space-y-4">
-        <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-semibold">Notifications</h3>
-            <button onClick={onClose} className="text-xl">&times;</button>
-        </div>
-        {notifications.length === 0 ? (
-          <p className="text-gray-500">No new notifications.</p>
-        ) : (
-          <ul className="space-y-2">
-            {notifications.map((note, index) => (
-              <li key={index} className="bg-gray-100 p-3 rounded-lg text-sm text-gray-800">
-                {note}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  
-
-
-export default Notifications;
 </div>
-    </div>
-  )
+
+)
+
 }
-}
-export default App
+
+export default App;
